@@ -1,0 +1,14 @@
+<h1>Détails de l'auteur</h1>
+
+{% if author is defined %}
+    <div style="border:1px solid #ddd; padding: 10px; width: 250px;">
+        <img src="{{ asset(author.picture) }}" alt="{{ author.username }}" width="150"><br><br>
+        <strong>Nom :</strong> {{ author.username }}<br>
+        <strong>Email :</strong> {{ author.email }}<br>
+        <strong>Nombre de livres :</strong> {{ author.nb_books }}
+    </div>
+    <br>
+    <a href="{{ path('list') }}">⬅️ Retour à la liste</a>
+{% else %}
+    <p style="color: red;">Auteur introuvable.</p>
+{% endif %}

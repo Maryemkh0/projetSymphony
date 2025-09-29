@@ -1,0 +1,22 @@
+{{nom|upper}}
+
+{#ceci un commentaire#}
+
+{#ceci pour ajouter un contenue de A#}
+{% set A=4 %}
+{{A}}
+
+{% if 'maryem' starts with 'I' %}
+    commence par I
+{% endif %}
+
+{# exemples des filtres #}
+{{'&hello3A24'|lower |trim('&')}}
+<a href="{{path('afficher')}}">
+Lien1
+</a>
+<a href="{{url('afficher')}}">
+Lien 2
+</a>
+
+<img src="{{asset('assets/images/Pink Flowers.jpg')}}">
