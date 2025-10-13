@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des livres{% endblock %}
+{% block body %}
+<h2 style="text-align:center;">📖 Liste des livres publiés</h2>
+
+<p style="text-align:center;margin:10px 0;">
+    <a href="{{ path('book_add') }}">➕ Ajouter un nouveau livre</a> |
+    <a href="{{ path('delete_empty_authors') }}">🧹 Supprimer auteurs sans livres</a>
+</p>
+
+{% if booksPublished is empty %}
+    <p style="text-align:center;color:gray;">⚠️ No Books found</p>
+{% else %}
+<table border="1" cellpadding="6" cellspacing="0" style="margin:auto;border-collapse:collapse;width:80%;">
+    <thead style="background:#007BFF;color:white;">
+        <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Catégorie</th>
+            <th>Date de publication</th>
+            <th>Auteur</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for book in booksPublished %}
+        <tr style="text-align:center;">
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.category }}</td>
+            <td>{{ book.publicationDate|date('d/m/Y') }}</td>
+            <td>{{ book.author.username }}</td>
+            <td>
+                <a href="{{ path('book_show', {'id': book.id}) }}">👁️ Show</a> |
+                <a href="{{ path('book_edit', {'id': book.id}) }}">✏️ Edit</a> |
+                <form method="post" action="{{ path('book_delete', {'id': book.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer ce livre ?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ book.id) }}">
+                    <button type="submit" style="border:none;background:none;color:red;cursor:pointer;">🗑️ Delete</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<hr style="margin:30px 0;">
+
+<h3 style="text-align:center;">📚 Statistiques</h3>
+<ul style="list-style:none;text-align:center;padding:0;">
+    <li>✅ Livres publiés : {{ booksPublished|length }}</li>
+    <li>❌ Livres non publiés : {{ booksNotPublished|length }}</li>
+</ul>
+{% endblock %}

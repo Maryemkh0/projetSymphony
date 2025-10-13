@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un auteur{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-warning text-dark text-center rounded-top-4">
+                    <h3>✏️ Modifier un auteur</h3>
+                </div>
+                <div class="card-body p-4">
+
+                    {{ form_start(form) }}
+                        <div class="form-floating mb-3">
+                            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+                            <label for="username">Nom complet</label>
+                            {{ form_errors(form.username) }}
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                            <label for="email">Email</label>
+                            {{ form_errors(form.email) }}
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            {{ form_widget(form.age, {'attr': {'class': 'form-control'}}) }}
+                            <label for="age">Âge</label>
+                            {{ form_errors(form.age) }}
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ path('ShowAllAuthor') }}" class="btn btn-outline-secondary">⬅ Retour</a>
+                            <button type="submit" class="btn btn-warning text-white">💾 Sauvegarder</button>
+                        </div>
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

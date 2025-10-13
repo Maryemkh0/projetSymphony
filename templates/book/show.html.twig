@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Détails du livre{% endblock %}
+{% block body %}
+<div style="max-width:600px;margin:auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
+    <h2 style="text-align:center;">📘 Détails du livre</h2>
+    <table style="width:100%;border-collapse:collapse;">
+        <tr><th style="text-align:left;">ID :</th><td>{{ book.id }}</td></tr>
+        <tr><th style="text-align:left;">Titre :</th><td>{{ book.title }}</td></tr>
+        <tr><th style="text-align:left;">Catégorie :</th><td>{{ book.category }}</td></tr>
+        <tr><th style="text-align:left;">Date de publication :</th><td>{{ book.publicationDate|date('d/m/Y') }}</td></tr>
+        <tr><th style="text-align:left;">Publié :</th><td>{{ book.published ? '✅ Oui' : '❌ Non' }}</td></tr>
+        <tr><th style="text-align:left;">Auteur :</th><td>{{ book.author.username }}</td></tr>
+    </table>
+
+    <div style="text-align:center;margin-top:15px;">
+        <a href="{{ path('book_edit', {'id': book.id}) }}">✏️ Modifier</a> |
+        <a href="{{ path('book_list') }}">⬅️ Retour à la liste</a>
+    </div>
+</div>
+{% endblock %}

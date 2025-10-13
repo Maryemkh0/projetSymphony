@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un livre{% endblock %}
+
+{% block body %}
+<div style="max-width:600px;margin:auto;background:#f8f9fa;padding:20px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.2)">
+    <h2 style="text-align:center;">📚 Ajouter un livre</h2>
+
+    {{ form_start(form) }}
+        <div style="margin-bottom:15px;">
+            {{ form_row(form.title) }}
+        </div>
+        <div style="margin-bottom:15px;">
+            {{ form_row(form.category) }}
+        </div>
+        <div style="margin-bottom:15px;">
+            {{ form_row(form.publicationDate) }}
+        </div>
+        <div style="margin-bottom:15px;">
+            {{ form_row(form.author) }}
+        </div>
+        <button class="btn btn-success" style="width:100%;padding:10px;">✅ Enregistrer</button>
+    {{ form_end(form) }}
+
+    <div style="text-align:center;margin-top:10px;">
+        <a href="{{ path('book_list') }}">⬅️ Retour à la liste des livres</a>
+    </div>
+</div>
+{% endblock %}

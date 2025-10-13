@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modifier un livre{% endblock %}
+{% block body %}
+<h2>✏️ Modifier un livre</h2>
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-success mt-3">Mettre à jour</button>
+{{ form_end(form) }}
+{% endblock %}
